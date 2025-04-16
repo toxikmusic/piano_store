@@ -1,0 +1,72 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased bg-gray-100 text-foreground;
+    overscroll-behavior: none;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+@layer components {
+  .grid-cell {
+    aspect-ratio: 1 / 1;
+    touch-action: manipulation;
+  }
+  
+  .note-key {
+    transition: all 0.15s ease-out;
+    will-change: transform, box-shadow;
+  }
+  
+  .loading-dots {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+  }
+  
+  .loading-dots div {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #3B82F6;
+  }
+  
+  /* Metronome indicator */
+  #metronome-indicator {
+    transition: background-color 0.1s ease;
+  }
+  
+  #metronome-indicator.active {
+    background-color: #3182ce;
+  }
+  
+  /* Recording animation */
+  @keyframes pulse-recording {
+    0% { opacity: 0.5; }
+    50% { opacity: 1; }
+    100% { opacity: 0.5; }
+  }
+  
+  .recording-indicator {
+    animation: pulse-recording 1.5s infinite;
+  }
+  
+  /* Hide scrollbar */
+  ::-webkit-scrollbar {
+    display: none;
+  }
+  
+  body {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
